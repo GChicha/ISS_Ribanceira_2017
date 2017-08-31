@@ -4,11 +4,15 @@
   "main": "index.js",
   "author": "Guilherme Chichanoski <guilherme.chichanoski@gmail.con>",
   "license": "MIT",
+  "scripts": {
+      "test": "mocha"
+  },
   "devDependencies": {
     "@types/body-parser": "^1.16.5",
     "@types/express": "^4.0.37",
     "browserify": "^14.4.0",
     "grunt": "^1.0.1",
+    "mocha": "^3.5.0",
     "typescript": "^2.4.2"
   },
   "dependencies": {
