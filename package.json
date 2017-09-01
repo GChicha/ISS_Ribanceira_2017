@@ -5,18 +5,19 @@
   "author": "Guilherme Chichanoski <guilherme.chichanoski@gmail.con>",
   "license": "MIT",
   "scripts": {
-      "test": "mocha"
+    "test": "YOURPACKAGE_COVERAGE=1 mocha test -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.5",
     "@types/express": "^4.0.37",
+    "@types/winston": "^2.3.5",
     "browserify": "^14.4.0",
     "grunt": "^1.0.1",
+    "grunt-ts": "^6.0.0-beta.16",
     "mocha": "^3.5.0",
     "typescript": "^2.4.2"
   },
   "dependencies": {
-    "@types/winston": "^2.3.5",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "winston": "^2.3.1"
