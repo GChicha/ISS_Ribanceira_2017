@@ -1,18 +1,20 @@
 {
   "name": "ISS-Trabalho",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server/index.js",
   "author": "Guilherme Chichanoski <guilherme.chichanoski@gmail.con>",
   "license": "MIT",
   "scripts": {
-    "test": "YOURPACKAGE_COVERAGE=1 mocha test -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "mocha"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.5",
     "@types/express": "^4.0.37",
+    "@types/morgan": "^1.7.32",
     "@types/winston": "^2.3.5",
     "browserify": "^14.4.0",
     "grunt": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-ts": "^6.0.0-beta.16",
     "mocha": "^3.5.0",
     "typescript": "^2.4.2"
@@ -20,6 +22,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "morgan": "^1.8.2",
     "winston": "^2.3.1"
   }
 }
