@@ -8,8 +8,15 @@ module.exports = function(grunt) {
                     rootDir: "src/",
                 }
             }
+        },
+        watch: {
+            ts: {
+                files: ["src/server/**/*.ts"],
+                tasks: ["ts"]
+            }
         }
     })
     grunt.loadNpmTasks("grunt-ts")
+    grunt.loadNpmTasks("grunt-contrib-watch")
     grunt.registerTask("default", ["ts"])
 }
