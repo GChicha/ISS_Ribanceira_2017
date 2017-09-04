@@ -6,6 +6,9 @@ module.exports = function(grunt) {
                 outDir: "dist/",
                 options: {
                     rootDir: "src/",
+                },
+                tsconfig: {
+                    tsconfig: './tsconfig.json'
                 }
             }
         },

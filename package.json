@@ -5,7 +5,8 @@
   "author": "Guilherme Chichanoski <guilherme.chichanoski@gmail.con>",
   "license": "MIT",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "grunt ts --force"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.5",
