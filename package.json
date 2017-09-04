@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "test": "mocha",
-    "build": "grunt ts --force"
+    "build": "grunt ts",
+    "start": "node ./dist/server/index.js",
+    "dev": "concurrently 'nodemon ./dist/server/index.js' 'grunt'"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.5",
@@ -15,10 +17,12 @@
     "@types/morgan": "^1.7.32",
     "@types/winston": "^2.3.5",
     "browserify": "^14.4.0",
+    "concurrently": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-ts": "^6.0.0-beta.16",
     "mocha": "^3.5.0",
+    "nodemon": "^1.12.0",
     "typescript": "^2.4.2"
   },
   "dependencies": {
@@ -27,5 +31,17 @@
     "mongodb": "^2.2.31",
     "morgan": "^1.8.2",
     "winston": "^2.3.1"
+  },
+  "nodemonConfig": {
+    "verbose": true,
+    "watch": [
+      "dist/server/",
+      "dist/common"
+    ],
+    "ignore": [
+      ".git",
+      "node_modules/**/node_modules",
+      "src/**"
+    ]
   }
 }

@@ -14,12 +14,12 @@ module.exports = function(grunt) {
         },
         watch: {
             ts: {
-                files: ["src/server/**/*.ts"],
+                files: ["src/**/*.ts"],
                 tasks: ["ts"]
             }
         }
     })
     grunt.loadNpmTasks("grunt-ts")
     grunt.loadNpmTasks("grunt-contrib-watch")
-    grunt.registerTask("default", ["ts"])
+    grunt.registerTask("default", ["watch"])
 }
