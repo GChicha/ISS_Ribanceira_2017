@@ -22,10 +22,7 @@ export class Empresa implements empresaSchema {
     }
 
     set razaoSocial (razaoSocial : string) {
-        if (razaoSocial.length < 5)
-            throw new Error("Razão social muito pequena")
-        else
-            this._razaoSocial = razaoSocial
+        this._razaoSocial = razaoSocial
     }
 
     get CNPJ () : string {
