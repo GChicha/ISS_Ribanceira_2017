@@ -5,22 +5,18 @@
   "author": "Guilherme Chichanoski <guilherme.chichanoski@gmail.con>",
   "license": "MIT",
   "scripts": {
-    "test": "mocha",
-    "build": "grunt ts",
-    "start": "node ./dist/server/index.js",
-    "dev": "concurrently 'nodemon ./dist/server/index.js' 'grunt'"
+    "test": "ts-mocha src/test/**/*.ts",
+    "start": "ts-node src/server/index.ts",
+    "dev": "nodemon"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.5",
     "@types/express": "^4.0.37",
+    "@types/mocha": "^2.2.42",
     "@types/mongodb": "^2.2.11",
     "@types/morgan": "^1.7.32",
     "@types/winston": "^2.3.5",
     "browserify": "^14.4.0",
-    "concurrently": "^3.5.0",
-    "grunt": "^1.0.1",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-ts": "^6.0.0-beta.16",
     "mocha": "^3.5.0",
     "nodemon": "^1.12.0",
     "typescript": "^2.4.2"
@@ -30,18 +26,17 @@
     "express": "^4.15.4",
     "mongodb": "^2.2.31",
     "morgan": "^1.8.2",
+    "ts-mocha": "^1.0.3",
+    "ts-node": "^3.3.0",
     "winston": "^2.3.1"
   },
   "nodemonConfig": {
     "verbose": true,
     "watch": [
-      "dist/server/",
-      "dist/common"
+      "src/server/**/*.ts",
+      "src/common/**/*.ts"
     ],
-    "ignore": [
-      ".git",
-      "node_modules/**/node_modules",
-      "src/**"
-    ]
+    "ext": "ts",
+    "exec": "yarn start"
   }
 }
