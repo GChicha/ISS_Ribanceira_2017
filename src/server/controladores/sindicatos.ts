@@ -5,35 +5,35 @@ import { Sindicato, sindicatoSchema } from '../../common/models/sindicato'
 import { Controlador } from './controlador'
 
 export class Sindicatos extends Controlador {
-	public readonly router: Router = Router()
+    public readonly router: Router = Router()
 
-	constructor(db : Db) {
-		super(db, "sindicatos")
+    constructor(db : Db) {
+        super(db, "sindicatos")
 
-		this.routes()
-	}
+        this.routes()
+    }
 
-	public async cadastrar(sindicato : Sindicato) {
-		return this._collection.insertOne(sindicato)
-	}
+    public async cadastrar(sindicato : Sindicato) {
+        return this._collection.insertOne(sindicato)
+    }
 
-	public async findAll() : Promise<Array<Sindicato>> {
-		return this._collection.find().map((doc : sindicatoSchema) => {
-			return new Sindicato(doc)
-		}).toArray()
-	}
+    public async findAll() : Promise<Array<Sindicato>> {
+        return this._collection.find().map((doc : sindicatoSchema) => {
+            return new Sindicato(doc)
+        }).toArray()
+    }
 
-	public routes() : void {
-		this.router.get('/', (req, res) => {
-			this.findAll()
-				.then(val => res.json(val))
-				.catch(val => res.json(val))
-		})
+    public routes() : void {
+        this.router.get('/', (req, res) => {
+            this.findAll()
+                .then(val => res.json(val))
+                .catch(val => res.json(val))
+        })
 
-		this.router.post('/', (req, res) => {
-			this.cadastrar(req.body)
-				.then(val => res.json(val))
-				.catch(val => res.json(val))
-		})
-	}
+        this.router.post('/', (req, res) => {
+            this.cadastrar(req.body)
+                .then(val => res.json(val))
+                .catch(val => res.json(val))
+        })
+    }
 }

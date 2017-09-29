@@ -8,7 +8,7 @@ export class ApiRouter {
     private _router : Router = Router()
     private empresas : Empresas
 
-	private sindicatos : Sindicatos
+    private sindicatos : Sindicatos
 
     constructor (Db : Db) {
         this._router.get("/", (req, res) => {
