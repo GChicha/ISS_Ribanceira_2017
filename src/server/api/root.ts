@@ -20,8 +20,8 @@ export class ApiRouter {
         this.empresas = new Empresas(Db)
         this.router.use("/empresas", this.empresas.router)
 
-		this.sindicatos = new Sindicatos(Db)
-		this.router.use("/sindicatos", this.sindicatos.router)
+        this.sindicatos = new Sindicatos(Db)
+        this.router.use("/sindicatos", this.sindicatos.router)
 
     }
 
