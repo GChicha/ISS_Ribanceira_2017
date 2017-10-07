@@ -1,23 +1,39 @@
-import { Endereco, Telefone } from './utils'
+import { Endereco, Telefone, ToBD, fromDb } from './utils'
 
 export interface sindicatoSchema {
-    ramoAtividade : string,
-    nome : string,
-    endereco : Endereco,
+    ramoAtividade : string
+    nome : string
+    endereco : Endereco
     telefone : Telefone
 }
 
-export class Sindicato implements sindicatoSchema {
+export interface sindicatoDbSchema extends fromDb {
+    _ramoAtividade : string
+    _nome : string
+    endereco : Endereco
+    telefone : Telefone
+}
+
+export class Sindicato extends ToBD implements sindicatoSchema  {
     private _ramoAtividade : string
     private _nome : string
     private _endereco : Endereco
     private _telefone : Telefone
 
-    constructor(sindicato : sindicatoSchema) {
-        this.telefone = sindicato.telefone
-        this.endereco = sindicato.endereco
-        this.nome = sindicato.nome
-        this.ramoAtividade = sindicato.ramoAtividade
+    constructor(sindicato : sindicatoSchema | sindicatoDbSchema) {
+        super()
+        if (this.fromDb(sindicato)) {
+            this.telefone = sindicato.telefone
+            this.endereco = sindicato.endereco
+            this.nome = sindicato._nome
+            this.ramoAtividade = sindicato._ramoAtividade
+        }
+        else {
+            this.telefone = sindicato.telefone
+            this.endereco = sindicato.endereco
+            this.nome = sindicato.nome
+            this.ramoAtividade = sindicato.ramoAtividade
+        }
     }
 
     set telefone(telefone : Telefone) {
@@ -45,11 +61,11 @@ export class Sindicato implements sindicatoSchema {
     }
 
     get nome() {
-        return this,_nome
+        return this._nome
     }
 
     get ramoAtividade() {
-        return this,_ramoAtividade
+        return this._ramoAtividade
     }
 }
 
