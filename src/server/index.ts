@@ -38,22 +38,20 @@ export class App {
      * @memberof App
      */
     private DbSetup() {
-        let promiseDb = MongoClient.connect(this.dbUrl)
+        MongoClient.connect(this.dbUrl)
+            .then((db) => {
+                this.apiRouter = new ApiRouter(db)
 
-        promiseDb.then((db) => {
-            this.apiRouter = new ApiRouter(db)
+                this.db = db
+                this.logger.info("Conectado ao Banco de Dados")
 
-            this.db = db
-            this.logger.info("Conectado ao Banco de Dados")
-
-            this.api()
-        })
-
-        promiseDb.catch((err) => {
-            this.logger.error("Erro de conexão com o banco de dados")
-            this.logger.error(JSON.stringify(err, null, 4))
-            process.exit(1)
-        })
+                this.api()
+            })
+            .catch((err) => {
+                this.logger.error("Erro de conexão com o banco de dados")
+                this.logger.error(JSON.stringify(err, null, 4))
+                process.exit(-1)
+            })
     }
 
     private api() {
