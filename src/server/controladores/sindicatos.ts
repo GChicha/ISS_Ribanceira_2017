@@ -2,42 +2,11 @@ import { MongoClient, Collection, Db, InsertOneWriteOpResult } from 'mongodb'
 import { Router } from 'express'
 import { Sindicato, sindicatoSchema, sindicatoDbSchema } from '../../common/models/sindicato'
 
-import { Controlador } from './controlador'
+import { ControladorGenerico } from './generico'
 
-export class Sindicatos extends Controlador {
-    public readonly router: Router = Router()
-
+export class Sindicatos extends ControladorGenerico<Sindicato> {
     constructor(db : Db) {
-        super(db, "sindicatos")
-
-        this.routes()
-    }
-
-    public async cadastrar(sindicato : Sindicato) {
-        return this._collection.insertOne(sindicato)
-    }
-
-    public async findAll() : Promise<Array<Sindicato>> {
-        return this._collection.find().map((doc : sindicatoSchema) => {
-            return new Sindicato(doc)
-        }).toArray()
-    }
-
-    public async findId(id : string) : Promise<Sindicato> {
-        return new Promise<Sindicato>((resolve, reject) => {
-            this._collection.findOne({_id: id})
-                .then(doc => {
-                    if (Object.keys(doc).length > 0)
-                        resolve(new Sindicato(doc))
-                    else
-                        reject(new Error("Not Found"))
-                })
-                .catch(err => reject(err))
-        })
-    }
-
-    public async find(query? : Object) : Promise<Array<Sindicato>> {
-        return this._collection.find(query).map((doc : sindicatoDbSchema) => new Sindicato(doc)).toArray()
+        super(Sindicato, db)
     }
 
     public routes() : void {
@@ -50,14 +19,15 @@ export class Sindicatos extends Controlador {
                         res.json(err)
                     })
             }
+            // Query com possíveis campos
             else {
                 let query = {}
 
                 if (req.query.nome !== undefined) {
-                    query["_nome"] = req.query.nome
+                    query["nome"] = req.query.nome
                 }
                 else if (req.query.ramoAtividade !== undefined) {
-                    query["_ramoAtividade"] = req.query.ramoAtividade
+                    query["ramoAtividade"] = req.query.ramoAtividade
                 }
 
                 this.find(query)

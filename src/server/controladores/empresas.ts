@@ -1,32 +1,13 @@
 import { MongoClient, Collection, Db, InsertOneWriteOpResult } from 'mongodb'
 import { Router } from 'express'
 
-import { Controlador } from './controlador'
+import { ControladorGenerico } from './generico'
 import { Empresa, empresaSchema } from '../../common/models/empresa'
 import { Funcionario } from '../../common/models/funcionario'
 
-export class Empresas extends Controlador {
-    public readonly router : Router = Router()
-
+export class Empresas extends ControladorGenerico<Empresa> {
     constructor(db : Db) {
-        super(db, "empresas")
-
-        this.routes()
-    }
-
-    public cadastrar(empresa : Empresa) : Promise<InsertOneWriteOpResult> {
-        return this._collection.insertOne(empresa)
-    }
-
-    public adicionarFuncionario (empresa : Empresa, funcionario : Funcionario) : Promise<boolean>{
-        return new Promise<boolean> ((resolve, reject) => {
-        })
-    }
-
-    public findAll () : Promise<Array<Empresa>> {
-        return this._collection.find().map((doc : empresaSchema) => {
-            return new Empresa(doc)
-        }).toArray()
+        super(Empresa, db)
     }
 
     public routes() : void {
