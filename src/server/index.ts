@@ -20,9 +20,9 @@ export class App {
     constructor() {
         this.config()
 
-        this.route()
-
         this.DbSetup()
+
+        this.route()
 
         this.app.listen(this.port, () => {
             this.logger.info("Listening on: " + this.port)
@@ -70,7 +70,7 @@ export class App {
 
     private route() {
         /* Rota estatica para os arquivos do cliente */
-        this.app.use('/static', express.static(__dirname + '/dist/client'))
+        this.app.use('/', express.static('./dist'))
     }
 }
 
