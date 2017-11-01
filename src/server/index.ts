@@ -2,6 +2,7 @@ import * as express from 'express'
 import * as bodyParser from 'body-parser'
 import * as logger from 'winston'
 import * as httpLogger from 'morgan'
+import * as path from 'path'
 import { MongoClient, Db } from 'mongodb'
 
 import { ApiRouter } from './api/root'
@@ -70,7 +71,10 @@ export class App {
 
     private route() {
         /* Rota estatica para os arquivos do cliente */
-        this.app.use('/', express.static('./dist'))
+        this.app.use('/', express.static(path.resolve('./dist')))
+        this.app.get('/*', function(req, res){
+            res.sendFile(path.resolve('./dist') + '/index.html');
+        });
     }
 }
 
