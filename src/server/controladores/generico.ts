@@ -9,11 +9,14 @@ export class ControladorGenerico<T> {
 
     constructor(classe : new (T) => T, db : Db) {
         this.classe = classe
+
+        this._collection = db.collection(this.classe.name)
+
         this.routes()
     }
 
     public async cadastrar(doc : T) {
-        return this._collection.insertOne(doc)
+        return this._collection.insertOne(new this.classe(doc))
     }
 
     public async findAll() : Promise<Array<T>> {
