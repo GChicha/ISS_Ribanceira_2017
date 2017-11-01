@@ -1,29 +1,17 @@
 <template>
-    <el-menu theme="dark" :default-active="activeIndex" mode="horizontal" @select="handleSelect">
-        <template slot="title">Ribanceira</template>
-        <el-submenu index="empresas">
-            <template slot="title">Empresas</template>
-            <el-menu-item index="empresas/cadastrar">Cadastrar</el-menu-item>
-            <el-menu-item index="empresas/buscar">Buscar</el-menu-item>
-        </el-submenu>
-        <el-submenu index="sindicatos">
-            <template slot="title">Sindicatos</template>
-            <el-menu-item index="sindicatos/cadastrar">Cadastrar</el-menu-item>
-            <el-menu-item index="sindicatos/buscar">Buscar</el-menu-item>
-        </el-submenu>
-        <el-submenu index="contratos">
-            <template slot="title">Contratos</template>
-            <el-menu-item index="contratos/cadastrar">Cadastrar</el-menu-item>
-            <el-menu-item index="contratos/buscar">Buscar</el-menu-item>
-        </el-submenu>
-    </el-menu>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <router-link class="navbar-brand" to="/">Ribanceira</router-link>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <router-link class="nav-link"
+                             to="/empresas">Empresas</router-link>
+            </li>
+        </ul>
+    </nav>
 </template>
 
 <script>
 export default {
-    name : 'Navbar',
-    methods: {
-        handleSelect: index => console.log(index)
-    }
+    name : 'Navbar'
 }
 </script>
