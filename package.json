@@ -7,7 +7,7 @@
   "scripts": {
     "test": "ts-mocha src/test/**/*.ts",
     "start": "ts-node src/server/index.ts",
-    "dev": "nodemon"
+    "dev": "concurrently nodemon 'poi watch src/client/main.js --noClear'"
   },
   "devDependencies": {
     "@types/body-parser": "^1.16.5",
@@ -19,26 +19,26 @@
     "@types/vue-router": "^2.0.0",
     "@types/winston": "^2.3.5",
     "browserify": "^14.4.0",
+    "concurrently": "^3.5.0",
     "css-loader": "^0.28.7",
     "mocha": "^3.5.0",
     "nodemon": "^1.12.0",
-    "poi": "^9.4.1",
+    "poi": "^9.4.4",
     "ts-loader": "^2.3.7",
     "ts-mocha": "^1.0.3",
     "typescript": "^2.5.2",
+    "vue": "^2.4.2",
     "vue-loader": "^13.0.4",
+    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.4.2",
     "webpack": "^3.5.6"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
-    "element-ui": "^1.4.7",
     "express": "^4.15.4",
     "mongodb": "^2.2.31",
     "morgan": "^1.8.2",
     "ts-node": "^3.3.0",
-    "vue": "^2.4.2",
-    "vue-router": "^2.7.0",
     "winston": "^2.3.1"
   },
   "nodemonConfig": {
