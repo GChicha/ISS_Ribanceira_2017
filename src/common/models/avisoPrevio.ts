@@ -3,7 +3,7 @@ import { Funcionario } from "./utils"
 
 export interface avisoPrevioSchema {
     _codigo                 : number,
-    funcionario            : string,
+    funcionario            : Funcionario,
     _dataAviso              : Date,
     _dataRescisao           : Date,
     _justificativaRescisao  : string
@@ -11,7 +11,7 @@ export interface avisoPrevioSchema {
 
 export class AvisoPrevio implements avisoPrevioSchema {
     private _codigo : number
-    public  readonly funcionario : string
+    public  readonly funcionario : Funcionario
     private _dataAviso   : Date
     private _dataRescisao : Date
     private _justificativaRescisao : string
@@ -32,15 +32,7 @@ export class AvisoPrevio implements avisoPrevioSchema {
         this._codigo = _codigo
     }
 
-    get funcionario () : string {
-        return this.funcionario
-    }
-
-    set funcionario (funcionario : string) {
-        this.funcionario = funcionario
-    }
-
-    get dataAviso () : string {
+    get dataAviso () : Date {
         return this._dataAviso
     }
 
