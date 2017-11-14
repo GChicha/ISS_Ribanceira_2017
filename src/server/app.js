@@ -70,8 +70,4 @@ module.exports = class App {
             res.sendFile(`${path.resolve('./dist')}/index.html`);
         });
     }
-
-    main() {
-        const app = new App();
-    }
 };

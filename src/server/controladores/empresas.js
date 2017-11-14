@@ -1,6 +1,5 @@
 const ControladorGenerico = require('./generico');
 const Empresa = require('../../common/models/empresa');
-const Funcionario = require('../../common/models/funcionario');
 
 module.export = class Empresas extends ControladorGenerico {
     constructor(db) {

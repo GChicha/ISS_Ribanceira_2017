@@ -19,10 +19,6 @@ module.exports = class Empresa {
         return this._CNPJ;
     }
 
-    set CNPJ(CNPJ) {
-        this._CNPJ = CNPJ;
-    }
-
     get formatedCNPJ() {
         // TODO: Formatar o CNPJ para exibição
         return this.CNPJ;

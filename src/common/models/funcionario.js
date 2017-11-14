@@ -18,6 +18,6 @@ module.exports = class Funcionario {
 
     set CPF(CPF) {
         // TODO Validar CPF
-        this._CPF = CPF
+        this._CPF = CPF;
     }
 };
