@@ -7,7 +7,7 @@ module.exports = class ApiRouter {
     constructor(Db) {
         this.router = Router();
 
-        this._router.get('/', (req, res) => {
+        this.router.get('/', (req, res) => {
             res.json({
                 mensagem: 'Hello World',
             });

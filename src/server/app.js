@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const httpLogger = require('morgan');
-const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
 
 const ApiRouter = require('./api/root');
 
@@ -32,7 +32,7 @@ module.exports = class App {
      * @memberof App
      */
     DbSetup() {
-        mongo.connect(this.dbUrl)
+        MongoClient.connect(this.dbUrl)
             .then((db) => {
                 this.apiRouter = new ApiRouter(db);
 
@@ -43,7 +43,7 @@ module.exports = class App {
             })
             .catch((err) => {
                 console.error('Erro de conexão com o banco de dados');
-                console.error(JSON.stringify(err, null, 4));
+                console.error(err);
 
                 throw new Error('Não foi possivel conentar com o banco');
             });
@@ -69,5 +69,9 @@ module.exports = class App {
         this.app.get('/*', (req, res) => {
             res.sendFile(`${path.resolve('./dist')}/index.html`);
         });
+    }
+
+    static main() {
+        const app = new App();
     }
 };
