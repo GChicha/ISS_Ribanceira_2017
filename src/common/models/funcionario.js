@@ -1,19 +1,23 @@
-const Endereco = require('./utils').Endereco
+const Endereco = require('./utils').Endereco;
 
 module.exports = class Funcionario {
-    constructor (nome) {
+    constructor(funcionario) {
+        this.nome = funcionario.nome;
+        this.CPF = funcionario.CPF;
+        this.endereco = new Endereco(funcionario.endereco);
     }
 
     get nome() {
-        return this._nome
+        // TODO Validar Nome
+        return this._nome;
     }
 
     get CPF() {
-        return this._CPF
+        return this._CPF;
     }
 
-    get formatedCPF() {
-        // TODO: Formatar CPF
-        return this.CPF
+    set CPF(CPF) {
+        // TODO Validar CPF
+        this._CPF = CPF
     }
-}
+};

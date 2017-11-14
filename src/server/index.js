@@ -1,3 +1,3 @@
-const App = require('./app')
+const App = require('./app');
 
-new App()
+App.main();
