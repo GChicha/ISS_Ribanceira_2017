@@ -1,15 +1,12 @@
-import { MongoClient, Collection, Db, InsertOneWriteOpResult } from 'mongodb'
-import { Router } from 'express'
-import { Sindicato, sindicatoSchema, sindicatoDbSchema } from '../../common/models/sindicato'
+const Sindicato = require('../../common/models/sindicato')
+const ControladorGenerico = require('./generico')
 
-import { ControladorGenerico } from './generico'
-
-export class Sindicatos extends ControladorGenerico<Sindicato> {
-    constructor(db : Db) {
+module.exports = class Sindicatos extends ControladorGenerico {
+    constructor(db) {
         super(Sindicato, db)
     }
 
-    public routes() : void {
+    routes() {
         this.router.get('/', (req, res) => {
             if (req.query.id !== undefined) {
                 this.findId(req.query.id)
@@ -19,15 +16,14 @@ export class Sindicatos extends ControladorGenerico<Sindicato> {
                         res.json(err)
                     })
             }
-            // Query com possíveis campos
             else {
                 let query = {}
 
                 if (req.query.nome !== undefined) {
-                    query["nome"] = req.query.nome
+                    query["_nome"] = req.query.nome
                 }
                 else if (req.query.ramoAtividade !== undefined) {
-                    query["ramoAtividade"] = req.query.ramoAtividade
+                    query["_ramoAtividade"] = req.query.ramoAtividade
                 }
 
                 this.find(query)
