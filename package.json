@@ -7,7 +7,8 @@
     "scripts": {
         "test": "mocha src/test/**/*.js",
         "start": "node src/server/app.js",
-        "dev": "concurrently nodemon 'poi watch src/client/main.js --noClear'"
+        "dev": "concurrently nodemon 'poi watch src/client/main.js --noClear'",
+        "lint": "eslint src/**/*.js"
     },
     "devDependencies": {
         "browserify": "^14.4.0",
