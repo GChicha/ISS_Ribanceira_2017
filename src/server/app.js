@@ -72,6 +72,10 @@ module.exports = class App {
     }
 
     static main() {
-        const app = new App();
+        return new App();
     }
 };
+
+if (require.main === module) {
+    module.exports.main();
+}

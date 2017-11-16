@@ -6,7 +6,7 @@
     "license": "MIT",
     "scripts": {
         "test": "mocha src/test/**/*.js",
-        "start": "node src/server/index.js",
+        "start": "node src/server/app.js",
         "dev": "concurrently nodemon 'poi watch src/client/main.js --noClear'"
     },
     "devDependencies": {
@@ -16,6 +16,7 @@
         "eslint": "^4.11.0",
         "eslint-config-airbnb-base": "^12.1.0",
         "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-mocha": "^4.11.0",
         "mocha": "^3.5.0",
         "nodemon": "^1.12.1",
         "poi": "^9.4.4",
